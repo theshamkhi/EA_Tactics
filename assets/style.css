@@ -99,12 +99,12 @@ body {
 }
 
 .slider {
-    display: flex; /* Arrange cards in a row */
-    flex-wrap: nowrap; /* Prevent wrapping of cards */
-    gap: 1rem; /* Add spacing between cards */
-    padding: 1rem; /* Optional padding around the slider */
-    width: 100%; /* Ensure it spans the entire width */
-    box-sizing: border-box; /* Include padding in width calculation */
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 .closeOverlay {
     position: absolute;
