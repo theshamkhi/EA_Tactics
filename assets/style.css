@@ -95,21 +95,17 @@ body {
 
 .sliderDiv {
     width: 100vw;
-    margin-right: 1vw;
     overflow-x: auto;
 }
 
 .slider {
-    display: flex;
-    gap: 2vw;
+    display: flex; /* Arrange cards in a row */
+    flex-wrap: nowrap; /* Prevent wrapping of cards */
+    gap: 1rem; /* Add spacing between cards */
+    padding: 1rem; /* Optional padding around the slider */
+    width: 100%; /* Ensure it spans the entire width */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
-
-.sliderItem {
-    width: 200px;
-    height: auto;
-    cursor: pointer;
-}
-
 .closeOverlay {
     position: absolute;
     top: 10px;
