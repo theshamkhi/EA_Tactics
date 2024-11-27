@@ -1,0 +1,84 @@
+// Fetch data from the JSON file and display player cards
+fetch('./data/data.json')
+    .then(response => response.json())
+    .then(data => {
+        const players = data.players; // Get players array
+        const playerSlider = document.getElementById('playerSlider');
+        
+        players.forEach(player => {
+            // Create a player card HTML structure
+            const cardHTML = `
+                <div class="player-card relative w-[300px] h-[485px] bg-cover bg-center p-[3.8rem_0] z-10" style="background-image: url('https://selimdoyranli.com/cdn/fut-player-card/img/card_bg.png');">
+                    <div class="flex relative text-[#e9cc74]">
+                        <div class="absolute text-left p-[1.5rem] text-uppercase">
+                            <div class="text-2xl font-light">${player.rating}</div> <!-- Rating -->
+                            <div class="text-xl font-light">${player.position}</div> <!-- Position -->
+                            
+                            <div class="block w-[2rem] h-[25px] my-[0.3rem]">
+                                <img class="w-full h-full object-contain" src="${player.flag}" alt="${player.nationality}">
+                            </div>
+                            
+                            <div class="block w-[2.1rem] h-[40px]">
+                                <img class="w-full h-full object-contain" src="${player.logo}" alt="${player.club}">
+                            </div>
+                        </div>
+                        
+                        <div class="w-[220px] h-auto mx-auto overflow-hidden">
+                            <img class="w-full h-full object-contain relative right-[-1.5rem] bottom-4" src="${player.photo}" alt="${player.name}">
+                        </div>
+                    </div>
+                
+                    <div class="relative">
+                        <div class="text-[#e9cc74] w-[90%] mx-auto py-[0.3rem_0]">
+                            <div class="text-center text-xl uppercase border-b-2 border-[#e9cc74] pb-[0.3rem]">
+                                <span class="text-shadow">${player.name}</span>
+                            </div>
+
+                            <div class="flex justify-center my-[0.5rem]">
+                                <div class="border-r-2 pr-[2.3rem]">
+                                    <span class="flex text-lg uppercase">
+                                        <span class="font-bold mr-[0.3rem]">${player.pace}</span><span class="font-light">PAC</span>
+                                    </span>
+                                    <span class="flex text-lg uppercase">
+                                        <span class="font-bold mr-[0.3rem]">${player.shooting}</span><span class="font-light">SHO</span>
+                                    </span>
+                                    <span class="flex text-lg uppercase">
+                                        <span class="font-bold mr-[0.3rem]">${player.passing}</span><span class="font-light">PAS</span>
+                                    </span>
+                                </div>
+                                <div class="pl-[2.3rem]">
+                                    <span class="flex text-lg uppercase">
+                                        <span class="font-bold mr-[0.3rem]">${player.dribbling}</span><span class="font-light">DRI</span>
+                                    </span>
+                                    <span class="flex text-lg uppercase">
+                                        <span class="font-bold mr-[0.3rem]">${player.defending}</span><span class="font-light">DEF</span>
+                                    </span>
+                                    <span class="flex text-lg uppercase">
+                                        <span class="font-bold mr-[0.3rem]">${player.physical}</span><span class="font-light">PHY</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            // Append each generated card to the slider container
+            playerSlider.innerHTML += cardHTML;
+        });
+    })
+    .catch(error => console.error('Error fetching player data:', error));
+
+// Overlay toggle functionality
+const addButtons = document.querySelectorAll('[id^="Add"]');
+const overlay = document.getElementById('overlay');
+const closeButton = document.getElementById('closeOverlay');
+
+addButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        overlay.classList.remove('hidden');
+    });
+});
+
+closeButton.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+});

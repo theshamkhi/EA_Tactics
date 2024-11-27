@@ -1,0 +1,128 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+    height: auto;
+}
+
+.stade {
+    position: relative;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 10%;
+}
+
+.player {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+}
+
+#LStriker, #MStriker, #RStriker,
+#LeftM, #MiddleM, #RightM,
+#LDefense, #M1Defense, #M2Defense, #RDefense,
+#Goal {
+    position: absolute;
+    width: 12vw;
+    height: auto;
+}
+
+#Add0,
+#Add2, #Add4, #Add3, #Add5,
+#Add6, #Add10, #Add8,
+#Add7, #Add9, #Add11 {
+    position: absolute;
+    width: 4vw;
+    height: auto;
+    cursor: pointer;
+    transition: transform .2s;
+}
+#Add0:hover,
+#Add2:hover, #Add4:hover, #Add3:hover, #Add5:hover,
+#Add6:hover, #Add10:hover, #Add8:hover,
+#Add7:hover, #Add9:hover, #Add11:hover {
+    transform: scale(1.1);
+}
+
+/* Player positions */
+#LStriker { top: 25%; left: 19%; }
+#Add7 { top: 31%; left: 23%; }
+#MStriker { top: 18%; left: 44%; }
+#Add9 { top: 24%; left: 48%; }
+#RStriker { top: 25%; right: 19%; }
+#Add11 { top: 31%; right: 23%; }
+
+#LeftM { top: 45%; left: 30%; }
+#Add6 { top: 51%; left: 34%; }
+#MiddleM { top: 35%; left: 44%; }
+#Add10 { top: 41%; left: 48%; }
+#RightM { top: 45%; right: 30%; }
+#Add8 { top: 51%; right: 34%; }
+
+#LDefense { top: 60%; left: 19%; }
+#Add3 { top: 66%; left: 23%; }
+#M1Defense { top: 66%; left: 36%; }
+#Add5 { top: 72%; left: 40%; }
+#M2Defense { top: 66%; right: 36%; }
+#Add4 { top: 72%; right: 40%; }
+#RDefense { top: 60%; right: 19%; }
+#Add2 { top: 66%; right: 23%; }
+
+#Goal { top: 82%; left: 44%; }
+#Add0 { top: 88%; left: 48%; }
+
+
+
+/* Overlay Style */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.sliderDiv {
+    width: 100vw;
+    margin-right: 1vw;
+    overflow-x: auto;
+}
+
+.slider {
+    display: flex;
+    gap: 2vw;
+}
+
+.sliderItem {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+}
+
+.closeOverlay {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.closeOverlay:hover {
+    background-color: darkred;
+}
+
