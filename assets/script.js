@@ -1,3 +1,27 @@
+// Overlay toggle functionality
+const addButtons = document.querySelectorAll('[id^="Add"]');
+const overlay = document.getElementById('overlay');
+const closeButton = document.getElementById('closeOverlay');
+
+addButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        overlay.classList.remove('hidden');
+    });
+});
+
+closeButton.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+});
+
+// Modal toggle functionality
+function OpenModal() {
+    document.getElementById("Modal").classList.remove("hidden");
+}
+  
+function CloseModal() {
+    document.getElementById("Modal").classList.add("hidden");
+}
+
 // Fetch data from the JSON file
 fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
     .then(response => response.json())
@@ -106,27 +130,3 @@ fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
         });
     })
     .catch(error => console.error('Error fetching player data:', error));
-
-// Overlay toggle functionality
-const addButtons = document.querySelectorAll('[id^="Add"]');
-const overlay = document.getElementById('overlay');
-const closeButton = document.getElementById('closeOverlay');
-
-addButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        overlay.classList.remove('hidden');
-    });
-});
-
-closeButton.addEventListener('click', () => {
-    overlay.classList.add('hidden');
-});
-
-// Modal toggle functionality
-function OpenModal() {
-    document.getElementById("Modal").classList.remove("hidden");
-}
-  
-function CloseModal() {
-    document.getElementById("Modal").classList.add("hidden");
-}
