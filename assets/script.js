@@ -1,4 +1,4 @@
-// Fetch data from the JSON file and display player cards
+// Fetch data from the JSON file
 fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
     .then(response => response.json())
     .then(data => {
@@ -6,8 +6,7 @@ fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
         const playerSlider = document.getElementById('playerSlider');
         
         players.forEach(player => {
-            // Create a player card HTML structure
-            const cardHTML = `
+            let cardHTML = `
                 <div class="relative w-[300px] h-[485px] bg-cover bg-center p-[2.5rem] z-10" style="background-image: url('https://selimdoyranli.com/cdn/fut-player-card/img/card_bg.png');">
                     
                     <!-- Player Card Top -->
@@ -43,36 +42,66 @@ fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
                             </div>
                 
                             <!-- Player Features -->
-                            <div class="flex justify-center my-[0.5rem]">
-                                <div class="border-r-2 pr-[2.3rem]">
-                                    <span class="flex text-lg uppercase">
-                                        <span class="font-bold mr-[0.3rem]">${player.pace}</span><span class="font-light">PAC</span>
-                                    </span>
-                                    <span class="flex text-lg uppercase">
-                                        <span class="font-bold mr-[0.3rem]">${player.shooting}</span><span class="font-light">SHO</span>
-                                    </span>
-                                    <span class="flex text-lg uppercase">
-                                        <span class="font-bold mr-[0.3rem]">${player.passing}</span><span class="font-light">PAS</span>
-                                    </span>
-                                </div>
-                                <div class="pl-[2.3rem]">
-                                    <span class="flex text-lg uppercase">
-                                        <span class="font-bold mr-[0.3rem]">${player.dribbling}</span><span class="font-light">DRI</span>
-                                    </span>
-                                    <span class="flex text-lg uppercase">
-                                        <span class="font-bold mr-[0.3rem]">${player.defending}</span><span class="font-light">DEF</span>
-                                    </span>
-                                    <span class="flex text-lg uppercase">
-                                        <span class="font-bold mr-[0.3rem]">${player.physical}</span><span class="font-light">PHY</span>
-                                    </span>
-                                </div>
+                            <div class="flex justify-center my-[0.5rem]">`;
+
+            // Condition for goalkeepers
+            if (player.position === "GK") {
+                cardHTML += `
+                    <div class="border-r-2 pr-[2.3rem]">
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.diving}</span><span class="font-light">DIV</span>
+                        </span>
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.handling}</span><span class="font-light">HAN</span>
+                        </span>
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.kicking}</span><span class="font-light">KIC</span>
+                        </span>
+                    </div>
+                    <div class="pl-[2.3rem]">
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.reflexes}</span><span class="font-light">REF</span>
+                        </span>
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.speed}</span><span class="font-light">SPD</span>
+                        </span>
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.positioning}</span><span class="font-light">POS</span>
+                        </span>
+                    </div>`;
+            } else {
+                cardHTML += `
+                    <div class="border-r-2 pr-[2.3rem]">
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.pace}</span><span class="font-light">PAC</span>
+                        </span>
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.shooting}</span><span class="font-light">SHO</span>
+                        </span>
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.passing}</span><span class="font-light">PAS</span>
+                        </span>
+                    </div>
+                    <div class="pl-[2.3rem]">
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.dribbling}</span><span class="font-light">DRI</span>
+                        </span>
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.defending}</span><span class="font-light">DEF</span>
+                        </span>
+                        <span class="flex text-lg uppercase">
+                            <span class="font-bold mr-[0.3rem]">${player.physical}</span><span class="font-light">PHY</span>
+                        </span>
+                    </div>`;
+            }
+
+            cardHTML += `
                             </div>
-                
                         </div>
                     </div>
-                </div>
-            `;
-            // Append each generated card to the slider container
+                </div>`;
+
+            // Append each card to the slider
             playerSlider.innerHTML += cardHTML;
         });
     })
@@ -92,3 +121,12 @@ addButtons.forEach(button => {
 closeButton.addEventListener('click', () => {
     overlay.classList.add('hidden');
 });
+
+// Modal toggle functionality
+function OpenModal() {
+    document.getElementById("Modal").classList.remove("hidden");
+}
+  
+function CloseModal() {
+    document.getElementById("Modal").classList.add("hidden");
+}

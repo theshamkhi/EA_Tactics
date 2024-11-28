@@ -88,8 +88,7 @@ body {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     z-index: 999;
 }
 
@@ -101,24 +100,25 @@ body {
 .slider {
     display: flex;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: 2rem;
     padding: 1rem;
     width: 100%;
     box-sizing: border-box;
 }
 .closeOverlay {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    background-color: red;
-    color: white;
-    padding: 10px;
-    border: none;
+    top: 20px;
+    right: 40px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-.closeOverlay:hover {
-    background-color: darkred;
+.AddPlayer {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #6d28d9, #4f46e5);
 }
-
+.AddPlayer:hover {
+    background: linear-gradient(135deg, #531ea8, #4f46e5);
+}
