@@ -1,0 +1,56 @@
+        Apply these stylings to the card below:
+
+        position: absolute;
+        width: 12vw;
+        height: auto;
+        top: 25%;
+        left: 19%;
+        
+        <div class="relative w-[300px] h-[485px] bg-cover bg-center p-[2.5rem] z-10" style="background-image: url('https://selimdoyranli.com/cdn/fut-player-card/img/card_bg.png');">
+            <div class="flex relative text-[#e9cc74]">
+                <div class="absolute text-left pt-[2rem] text-uppercase">
+                    <div class="text-2xl font-light">${rating}</div>
+                    <div class="text-xl font-light">${position}</div>
+                    <div class="block w-[2rem] h-[25px] my-[0.3rem]">
+                        <img class="w-full h-full object-contain" src="${flag}" alt="${nationality}">
+                    </div>
+                    <div class="block w-[2.1rem] h-[40px]">
+                        <img class="w-full h-full object-contain" src="${logo}" alt="${club}">
+                    </div>
+                </div>
+                <div class="w-[220px] h-auto mx-auto overflow-hidden">
+                    <img class="w-full h-full object-contain relative bottom-0" src="${photo}" alt="${name}">
+                </div>
+            </div>
+            <div class="relative">
+                <div class="text-[#e9cc74] w-[90%] mx-auto py-[0.3rem_0]">
+                    <div class="text-center text-xl uppercase border-b-2 border-[#e9cc74] py-[1rem]">
+                        <span class="text-shadow">${name}</span>
+                    </div>
+                    <div class="flex justify-center my-[0.5rem]">
+                        <div class="border-r-2 pr-[2.3rem]">
+                            <span class="flex text-lg uppercase">
+                                <span class="font-bold mr-[0.3rem]">${pace}</span><span class="font-light">PAC</span>
+                            </span>
+                            <span class="flex text-lg uppercase">
+                                <span class="font-bold mr-[0.3rem]">${shooting}</span><span class="font-light">SHO</span>
+                            </span>
+                            <span class="flex text-lg uppercase">
+                                <span class="font-bold mr-[0.3rem]">${passing}</span><span class="font-light">PAS</span>
+                            </span>
+                        </div>
+                        <div class="pl-[2.3rem]">
+                            <span class="flex text-lg uppercase">
+                                <span class="font-bold mr-[0.3rem]">${dribbling}</span><span class="font-light">DRI</span>
+                            </span>
+                            <span class="flex text-lg uppercase">
+                                <span class="font-bold mr-[0.3rem]">${defending}</span><span class="font-light">DEF</span>
+                            </span>
+                            <span class="flex text-lg uppercase">
+                                <span class="font-bold mr-[0.3rem]">${physical}</span><span class="font-light">PHY</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -33,51 +33,33 @@ body {
     height: auto;
 }
 
-#Add0,
-#Add2, #Add4, #Add3, #Add5,
-#Add6, #Add10, #Add8,
-#Add7, #Add9, #Add11 {
+img[alt="Add"] {
     position: absolute;
     width: 4vw;
     height: auto;
     cursor: pointer;
     transition: transform .2s;
 }
-#Add0:hover,
-#Add2:hover, #Add4:hover, #Add3:hover, #Add5:hover,
-#Add6:hover, #Add10:hover, #Add8:hover,
-#Add7:hover, #Add9:hover, #Add11:hover {
+img[alt="Add"]:hover {
     transform: scale(1.1);
 }
+img[alt="Add"] { top: 40%; left: 34%; }
 
 /* Player positions */
 #LStriker { top: 25%; left: 19%; }
-#Add7 { top: 31%; left: 23%; }
 #MStriker { top: 18%; left: 44%; }
-#Add9 { top: 24%; left: 48%; }
 #RStriker { top: 25%; right: 19%; }
-#Add11 { top: 31%; right: 23%; }
 
 #LeftM { top: 45%; left: 30%; }
-#Add6 { top: 51%; left: 34%; }
 #MiddleM { top: 35%; left: 44%; }
-#Add10 { top: 41%; left: 48%; }
 #RightM { top: 45%; right: 30%; }
-#Add8 { top: 51%; right: 34%; }
 
 #LDefense { top: 60%; left: 19%; }
-#Add3 { top: 66%; left: 23%; }
 #M1Defense { top: 66%; left: 36%; }
-#Add5 { top: 72%; left: 40%; }
 #M2Defense { top: 66%; right: 36%; }
-#Add4 { top: 72%; right: 40%; }
 #RDefense { top: 60%; right: 19%; }
-#Add2 { top: 66%; right: 23%; }
 
 #Goal { top: 82%; left: 44%; }
-#Add0 { top: 88%; left: 48%; }
-
-
 
 /* Overlay Style */
 .overlay {
