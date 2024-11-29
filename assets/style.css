@@ -3,6 +3,7 @@
     padding:0;
     box-sizing: border-box;
 }
+
 body {
     background-color: black;
     height: auto;
@@ -24,43 +25,35 @@ body {
     height: 100%;
 }
 
-.LStriker, .MStriker, .RStriker,
-.LeftM, .MiddleM, .RightM,
-.LDefense, .M1Defense, .M2Defense, .RDefense,
-.Goal {
+.GK,
+.CB1, .CB2, .RB, .LB,
+.RM, .LM, .CM,
+.RW, .LW, .CF {
     position: absolute;
     width: 12vw;
-    height: auto;
+    height: 20vw;
+    background-image: url('https://selimdoyranli.com/cdn/fut-player-card/img/card_bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 1%;
 }
 
 /* Player positions */
-.LStriker { top: 25%; left: 19%; }
-.MStriker { top: 18%; left: 44%; }
-.RStriker { top: 25%; right: 19%; }
+.LW { top: 25%; left: 19%; }
+.CF { top: 18%; left: 44%; }
+.RW { top: 25%; right: 19%; }
 
-.LeftM { top: 45%; left: 30%; }
-.MiddleM { top: 35%; left: 44%; }
-.RightM { top: 45%; right: 30%; }
+.LM { top: 45%; left: 30%; }
+.CM { top: 35%; left: 44%; }
+.RM { top: 45%; right: 30%; }
 
-.LDefense { top: 60%; left: 19%; }
-.M1Defense { top: 66%; left: 36%; }
-.M2Defense { top: 66%; right: 36%; }
-.RDefense { top: 60%; right: 19%; }
+.LB { top: 60%; left: 19%; }
+.CB2 { top: 66%; left: 36%; }
+.CB1 { top: 66%; right: 36%; }
+.RB { top: 60%; right: 19%; }
 
-.Goal { top: 82%; left: 44%; }
+.GK { top: 82%; left: 44%; }
 
-/* Overlay Style */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: flex-end;
-    z-index: 999;
-}
 
 .sliderDiv {
     width: 100vw;
@@ -74,21 +67,4 @@ body {
     padding: 1rem;
     width: 100%;
     box-sizing: border-box;
-}
-.closeOverlay {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    cursor: pointer;
-}
-
-.AddPlayer {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, #6d28d9, #4f46e5);
-}
-.AddPlayer:hover {
-    background: linear-gradient(135deg, #531ea8, #4f46e5);
 }
