@@ -24,42 +24,30 @@ body {
     height: 100%;
 }
 
-#LStriker, #MStriker, #RStriker,
-#LeftM, #MiddleM, #RightM,
-#LDefense, #M1Defense, #M2Defense, #RDefense,
-#Goal {
+.LStriker, .MStriker, .RStriker,
+.LeftM, .MiddleM, .RightM,
+.LDefense, .M1Defense, .M2Defense, .RDefense,
+.Goal {
     position: absolute;
     width: 12vw;
     height: auto;
 }
 
-img[alt="Add"] {
-    position: absolute;
-    width: 4vw;
-    height: auto;
-    cursor: pointer;
-    transition: transform .2s;
-}
-img[alt="Add"]:hover {
-    transform: scale(1.1);
-}
-img[alt="Add"] { top: 40%; left: 34%; }
-
 /* Player positions */
-#LStriker { top: 25%; left: 19%; }
-#MStriker { top: 18%; left: 44%; }
-#RStriker { top: 25%; right: 19%; }
+.LStriker { top: 25%; left: 19%; }
+.MStriker { top: 18%; left: 44%; }
+.RStriker { top: 25%; right: 19%; }
 
-#LeftM { top: 45%; left: 30%; }
-#MiddleM { top: 35%; left: 44%; }
-#RightM { top: 45%; right: 30%; }
+.LeftM { top: 45%; left: 30%; }
+.MiddleM { top: 35%; left: 44%; }
+.RightM { top: 45%; right: 30%; }
 
-#LDefense { top: 60%; left: 19%; }
-#M1Defense { top: 66%; left: 36%; }
-#M2Defense { top: 66%; right: 36%; }
-#RDefense { top: 60%; right: 19%; }
+.LDefense { top: 60%; left: 19%; }
+.M1Defense { top: 66%; left: 36%; }
+.M2Defense { top: 66%; right: 36%; }
+.RDefense { top: 60%; right: 19%; }
 
-#Goal { top: 82%; left: 44%; }
+.Goal { top: 82%; left: 44%; }
 
 /* Overlay Style */
 .overlay {
