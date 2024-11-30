@@ -129,6 +129,38 @@
         "physical": 75
       },
       {
+        "name": "Sofyan Amrabat",
+        "photo": "https://cdn3.futbin.com/content/fifa25/img/players/p67333022.png?fm=png&ixlib=java-2.1.0&verzion=1&w=252&s=c5347def8afca1ae52e86efe087ef492",
+        "position": "RM",
+        "nationality": "Morocco",
+        "flag": "https://cdn.sofifa.net/flags/ma.png",
+        "club": "Manchester United",
+        "logo": "https://cdn3.futbin.com/content/fifa25/img/clubs/dark/11.png?fm=png&ixlib=java-2.1.0&verzion=2&w=30&s=5529694a6597dbbaf483484690aa6eda",
+        "rating": 84,
+        "pace": 79,
+        "shooting": 80,
+        "passing": 79,
+        "dribbling": 83,
+        "defending": 82,
+        "physical": 86
+      },
+      {
+        "name": "Nordin Amrabat",
+        "photo": "https://cdn3.futbin.com/content/fifa25/img/players/p67333022.png?fm=png&ixlib=java-2.1.0&verzion=1&w=252&s=c5347def8afca1ae52e86efe087ef492",
+        "position": "LM",
+        "nationality": "Morocco",
+        "flag": "https://cdn.sofifa.net/flags/ma.png",
+        "club": "AEK Athens",
+        "logo": "https://cdn3.futbin.com/content/fifa25/img/clubs/dark/278.png?fm=png&ixlib=java-2.1.0&verzion=2&w=30&s=2714fd586ac733464bdc8e77ece15b62",
+        "rating": 75,
+        "pace": 78,
+        "shooting": 68,
+        "passing": 74,
+        "dribbling": 76,
+        "defending": 55,
+        "physical": 86
+      },
+      {
         "name": "Joshua Kimmich",
         "photo": "https://cdn.sofifa.net/players/212/622/25_120.png",
         "position": "CM",
