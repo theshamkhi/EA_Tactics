@@ -74,7 +74,7 @@ document.getElementById('playerForm').addEventListener('submit', function (e) {
     e.target.reset();
 });
   
-// Function to populate a player card
+// Function to populate a player card (updated with delete button)
 function populatePlayerCard(player) {
     const { position, name, photo, 
             nationality, flag, club, logo, rating, 
@@ -86,97 +86,110 @@ function populatePlayerCard(player) {
     if (!positionCard) return;
 
     let cardHTML = `
-            <!-- Player Card Top -->
-            <div class="flex relative text-[#e9cc74]">
-                <div class="absolute text-left pt-[2rem] text-uppercase">
-                    <div class="text-xl font-bold">${rating}</div>
-                    <div class="text-xl font-bold">${position}</div>
-                    
-                    <div class="block w-[1.7rem] h-auto my-[0.3rem]">
-                        <img class="w-full h-full object-contain" src="${flag}" alt="${nationality}">
-                    </div>
-                    
-                    <div class="block w-[1.7rem] h-auto">
-                        <img class="w-full h-full object-contain" src="${logo}" alt="${club}">
-                    </div>
+        <!-- Player Card Top -->
+        <div class="flex relative text-[#e9cc74] player-card" data-position="${position}">
+            <div class="absolute top-0 right-0">
+                <button class="delete-button text-red-800" onclick="deletePlayerCard('${position}')">X</button>
+            </div>
+            <div class="absolute text-left pt-[2rem] text-uppercase">
+                <div class="text-xl font-bold">${rating}</div>
+                <div class="text-xl font-bold">${position}</div>
+                <div class="block w-[1.7rem] h-auto my-[0.3rem]">
+                    <img class="w-full h-full object-contain" src="${flag}" alt="${nationality}">
                 </div>
-                
-                <div class="w-[9.4vw] h-auto mx-auto overflow-hidden">
-                    <img class="w-full h-full object-contain relative bottom-0" src="${photo}" alt="${name}">
+                <div class="block w-[1.7rem] h-auto">
+                    <img class="w-full h-full object-contain" src="${logo}" alt="${club}">
                 </div>
             </div>
-        
-            <!-- Player Card Bottom -->
-            <div class="relative">
-                <div class="text-[#e9cc74] w-[90%] mx-auto py-[0.3rem_0]">
-                    
-                    <div class="text-center text-sm font-bold uppercase border-b-2 border-[#e9cc74] py-[0.4rem]">
-                        <span class="text-shadow">${name}</span>
-                    </div>
-        
-                    <div class="flex justify-center my-[0.5rem]">`;
+            <div class="w-[9.4vw] h-auto mx-auto overflow-hidden">
+                <img class="w-full h-full object-contain relative bottom-0" src="${photo}" alt="${name}">
+            </div>
+        </div>
+        <!-- Player Card Bottom -->
+        <div class="relative">
+            <div class="text-[#e9cc74] w-[90%] mx-auto py-[0.3rem_0]">
+                <div class="text-center text-sm font-bold uppercase border-b-2 border-[#e9cc74] py-[0.4rem]">
+                    <span class="text-shadow">${name}</span>
+                </div>
+                <div class="flex justify-center my-[0.5rem]">`;
 
-            // Condition for goalkeepers
-            if (position === "GK") {
-                cardHTML += `
-                    <div class="border-r-2 border-[#e9cc74] pr-[1.5rem]">
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${diving}</span><span class="font-light">DIV</span>
-                        </span>
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${handling}</span><span class="font-light">HAN</span>
-                        </span>
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${kicking}</span><span class="font-light">KIC</span>
-                        </span>
-                    </div>
-                    <div class="pl-[1.5rem]">
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${reflexes}</span><span class="font-light">REF</span>
-                        </span>
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${speed}</span><span class="font-light">SPD</span>
-                        </span>
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${positioning}</span><span class="font-light">POS</span>
-                        </span>
-                    </div>`;
-            } else {
-                cardHTML += `
-                    <div class="border-r-2 border-[#e9cc74] pr-[1.5rem]">
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${pace}</span><span class="font-light">PAC</span>
-                        </span>
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${shooting}</span><span class="font-light">SHO</span>
-                        </span>
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${passing}</span><span class="font-light">PAS</span>
-                        </span>
-                    </div>
-                    <div class="pl-[1.5rem]">
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${dribbling}</span><span class="font-light">DRI</span>
-                        </span>
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${defending}</span><span class="font-light">DEF</span>
-                        </span>
-                        <span class="flex text-xs uppercase">
-                            <span class="font-bold mr-[0.3rem]">${physical}</span><span class="font-light">PHY</span>
-                        </span>
-                    </div>`;
-            }
+    // Add goalkeeper or field player stats
+    if (position === "GK") {
+        cardHTML += `
+            <div class="border-r-2 border-[#e9cc74] pr-[1.5rem]">
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${diving}</span><span class="font-light">DIV</span>
+                </span>
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${handling}</span><span class="font-light">HAN</span>
+                </span>
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${kicking}</span><span class="font-light">KIC</span>
+                </span>
+            </div>
+            <div class="pl-[1.5rem]">
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${reflexes}</span><span class="font-light">REF</span>
+                </span>
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${speed}</span><span class="font-light">SPD</span>
+                </span>
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${positioning}</span><span class="font-light">POS</span>
+                </span>
+            </div>`;
+    } else {
+        cardHTML += `
+            <div class="border-r-2 border-[#e9cc74] pr-[1.5rem]">
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${pace}</span><span class="font-light">PAC</span>
+                </span>
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${shooting}</span><span class="font-light">SHO</span>
+                </span>
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${passing}</span><span class="font-light">PAS</span>
+                </span>
+            </div>
+            <div class="pl-[1.5rem]">
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${dribbling}</span><span class="font-light">DRI</span>
+                </span>
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${defending}</span><span class="font-light">DEF</span>
+                </span>
+                <span class="flex text-xs uppercase">
+                    <span class="font-bold mr-[0.3rem]">${physical}</span><span class="font-light">PHY</span>
+                </span>
+            </div>`;
+    }
 
-            cardHTML += `
-                            </div>
-                        </div>
-                    </div>
+    cardHTML += `
+                </div>
+            </div>
+        </div>
     `;
-    // Append each card to the slider
-    positionCard.innerHTML += cardHTML;
+
+    positionCard.innerHTML = cardHTML;
 
     positionCard.classList.add('filled');
 }
+
+// Function to delete a player card
+function deletePlayerCard(position) {
+    const positionCard = document.querySelector(`.players .${position}`);
+    if (!positionCard) return;
+
+    // Remove card content
+    positionCard.innerHTML = '';
+    positionCard.classList.remove('filled');
+
+    // Update localStorage
+    const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
+    const updatedPlayers = savedPlayers.filter((player) => player.position !== position);
+    localStorage.setItem('players', JSON.stringify(updatedPlayers));
+}
+
   
 // Function to save player data to localStorage
 function savePlayerToLocalStorage(player) {

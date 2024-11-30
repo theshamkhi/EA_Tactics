@@ -12,8 +12,8 @@
 
 
     <div class="stade">
-        <img src="assets/media/stade.jpg" alt="Stade">
-        <div class="players" id="playersContainer">
+        <img src="assets/media/stade.jpg" alt="Stadium" style="opacity: 0.7;">
+        <div class="players">
             <!-- FRONT -->
             <div class="CF">
                 <img src="assets/media/add.png" alt="Add" id="Add9" onclick="OpenModal('Add9')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
@@ -55,141 +55,145 @@
     </div>
 
 
-    <!-- Modal -->
-    <div id="Modal" class="relative z-[9999] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+<!-- Modal -->
+<div id="Modal" class="relative z-[9999] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div class="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                    
-                    <!-- Modal header -->
-                    <div class="flex items-center justify-between p-4 border-b border-gray-700 rounded-t">
-                        <h3 class="text-lg font-semibold text-gray-100">
-                            Add Player Information
-                        </h3>
-                        <button type="button" onclick="CloseModal()" class="text-gray-400 bg-transparent hover:bg-gray-700 hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                    </div>
-                    
-                    <form id="playerForm" class="p-4">
-                        <div class="grid gap-4 mb-4 grid-cols-1 sm:grid-cols-2">
-                            <div class="col-span-2">
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-200">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Enter player name" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            </div>
-
-                            <div class="col-span-1">
-                                <label for="photo" class="block mb-2 text-sm font-medium text-gray-200">Photo URL</label>
-                                <input type="text" id="photo" placeholder="Enter photo URL" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                            </div>
-
-                            <div class="col-span-1">
-                                <label for="position" class="block mb-2 text-sm font-medium text-gray-200">Position</label>
-                                <input type="text" id="position" placeholder="Enter position (e.g., RW)" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5" disabled>
-                            </div>
-
-                            <div class="col-span-1">
-                                <label for="nationality" class="block mb-2 text-sm font-medium text-gray-200">Nationality</label>
-                                <input type="text" id="nationality" placeholder="Enter nationality" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                            </div>
-
-                            <div class="col-span-1">
-                                <label for="flag" class="block mb-2 text-sm font-medium text-gray-200">Flag URL</label>
-                                <input type="text" id="flag" placeholder="Enter flag URL" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                            </div>
-
-                            <div class="col-span-1">
-                                <label for="club" class="block mb-2 text-sm font-medium text-gray-200">Club</label>
-                                <input type="text" id="club" placeholder="Enter club name" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                            </div>
-
-                            <div class="col-span-1">
-                                <label for="logo" class="block mb-2 text-sm font-medium text-gray-200">Club Logo URL</label>
-                                <input type="text" id="logo" placeholder="Enter club logo URL" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                            </div>
-
-                            <div class="col-span-1">
-                                <label for="rating" class="block mb-2 text-sm font-medium text-gray-200">Rating</label>
-                                <input type="number" id="rating" placeholder="Enter rating" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                            </div>
-
-                            <div id="goalkeeperAttributes" class="hidden">
-                                <div class="col-span-2 grid grid-cols-3 gap-2">
-                                    <div>
-                                        <label for="diving" class="block mb-2 text-sm font-medium text-gray-200">Diving</label>
-                                        <input type="number" id="diving" placeholder="Enter diving" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="handling" class="block mb-2 text-sm font-medium text-gray-200">Handling</label>
-                                        <input type="number" id="handling" placeholder="Enter handling" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="kicking" class="block mb-2 text-sm font-medium text-gray-200">Kicking</label>
-                                        <input type="number" id="kicking" placeholder="Enter kicking" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="reflexes" class="block mb-2 text-sm font-medium text-gray-200">Reflexes</label>
-                                        <input type="number" id="reflexes" placeholder="Enter reflexes" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="speed" class="block mb-2 text-sm font-medium text-gray-200">Speed</label>
-                                        <input type="number" id="speed" placeholder="Enter speed" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="positioning" class="block mb-2 text-sm font-medium text-gray-200">Positioning</label>
-                                        <input type="number" id="positioning" placeholder="Enter positioning" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div id="fieldPlayerAttributes" class="">
-                                <div class="col-span-2 grid grid-cols-3 gap-2">
-                                    <div>
-                                        <label for="pace" class="block mb-2 text-sm font-medium text-gray-200">Pace</label>
-                                        <input type="number" id="pace" placeholder="Enter pace" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="shooting" class="block mb-2 text-sm font-medium text-gray-200">Shooting</label>
-                                        <input type="number" id="shooting" placeholder="Enter shooting" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="passing" class="block mb-2 text-sm font-medium text-gray-200">Passing</label>
-                                        <input type="number" id="passing" placeholder="Enter passing" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="dribbling" class="block mb-2 text-sm font-medium text-gray-200">Dribbling</label>
-                                        <input type="number" id="dribbling" placeholder="Enter dribbling" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="defending" class="block mb-2 text-sm font-medium text-gray-200">Defending</label>
-                                        <input type="number" id="defending" placeholder="Enter defending" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                    <div>
-                                        <label for="physical" class="block mb-2 text-sm font-medium text-gray-200">Physical</label>
-                                        <input type="number" id="physical" placeholder="Enter physical" class="bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="flex justify-end items-center gap-x-2 py-3 px-4">
-                            <button type="button" onclick="CloseModal()" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-600 bg-gray-700 text-gray-100 shadow-sm hover:bg-gray-600 focus:outline-none">
-                                Close
-                            </button>
-                            <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent gradBg shadow-md transition Hovering text-white focus:outline-none">
-                                Save
-                            </button>                
-                        </div>
-                    </form>
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 border-b border-gray-700 rounded-t">
+                    <h3 class="text-lg font-semibold text-gray-100">
+                        Add Player Information
+                    </h3>
+                    <button type="button" onclick="CloseModal()" class="text-gray-400 bg-transparent hover:bg-gray-700 hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
                 </div>
+
+                <!-- Form -->
+                <form id="playerForm" class="p-4 space-y-6">
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        <!-- Player Name -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-200">Name</label>
+                            <input type="text" id="name" placeholder="Enter player name" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Photo URL -->
+                        <div>
+                            <label for="photo" class="block text-sm font-medium text-gray-200">Photo URL</label>
+                            <input type="text" id="photo" placeholder="Enter photo URL" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Position (disabled) -->
+                        <div>
+                            <label for="position" class="block text-sm font-medium text-gray-200">Position</label>
+                            <input type="text" id="position" placeholder="Enter position" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500" disabled>
+                        </div>
+
+                        <!-- Nationality -->
+                        <div>
+                            <label for="nationality" class="block text-sm font-medium text-gray-200">Nationality</label>
+                            <input type="text" id="nationality" placeholder="Enter nationality" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Flag URL -->
+                        <div>
+                            <label for="flag" class="block text-sm font-medium text-gray-200">Flag URL</label>
+                            <input type="text" id="flag" placeholder="Enter flag URL" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Club -->
+                        <div>
+                            <label for="club" class="block text-sm font-medium text-gray-200">Club</label>
+                            <input type="text" id="club" placeholder="Enter club name" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Club Logo URL -->
+                        <div>
+                            <label for="logo" class="block text-sm font-medium text-gray-200">Club Logo URL</label>
+                            <input type="text" id="logo" placeholder="Enter club logo URL" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Rating -->
+                        <div>
+                            <label for="rating" class="block text-sm font-medium text-gray-200">Rating</label>
+                            <input type="number" id="rating" placeholder="Enter rating" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Goalkeeper Attributes -->
+                    <div id="goalkeeperAttributes" class="hidden grid grid-cols-2 gap-6 lg:grid-cols-3">
+                        <div>
+                            <label for="diving" class="block text-sm font-medium text-gray-200">Diving</label>
+                            <input type="number" id="diving" placeholder="Enter diving" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="handling" class="block text-sm font-medium text-gray-200">Handling</label>
+                            <input type="number" id="handling" placeholder="Enter handling" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="kicking" class="block text-sm font-medium text-gray-200">Kicking</label>
+                            <input type="number" id="kicking" placeholder="Enter kicking" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="reflexes" class="block text-sm font-medium text-gray-200">Reflexes</label>
+                            <input type="number" id="reflexes" placeholder="Enter reflexes" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="speed" class="block text-sm font-medium text-gray-200">Speed</label>
+                            <input type="number" id="speed" placeholder="Enter speed" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="positioning" class="block text-sm font-medium text-gray-200">Positioning</label>
+                            <input type="number" id="positioning" placeholder="Enter positioning" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Field Player Attributes -->
+                    <div id="fieldPlayerAttributes" class="hidden grid grid-cols-2 gap-6 lg:grid-cols-3">
+                        <div>
+                            <label for="pace" class="block text-sm font-medium text-gray-200">Pace</label>
+                            <input type="number" id="pace" placeholder="Enter pace" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="shooting" class="block text-sm font-medium text-gray-200">Shooting</label>
+                            <input type="number" id="shooting" placeholder="Enter shooting" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="passing" class="block text-sm font-medium text-gray-200">Passing</label>
+                            <input type="number" id="passing" placeholder="Enter passing" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="dribbling" class="block text-sm font-medium text-gray-200">Dribbling</label>
+                            <input type="number" id="dribbling" placeholder="Enter dribbling" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="defending" class="block text-sm font-medium text-gray-200">Defending</label>
+                            <input type="number" id="defending" placeholder="Enter defending" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="physical" class="block text-sm font-medium text-gray-200">Physical</label>
+                            <input type="number" id="physical" placeholder="Enter physical" class="mt-1 bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-6">
+                        <button type="submit" id="submitButton" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg w-full sm:w-auto">Add Player</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
     
     <script src="assets/script.js"></script>
 </body>
