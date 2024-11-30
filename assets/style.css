@@ -68,3 +68,10 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
+
+
+.filled {
+    img[alt="Add"] {
+        display: none;
+    }
+}
