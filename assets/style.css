@@ -32,7 +32,7 @@ body {
 .GK,
 .CB1, .CB2, .RB, .LB,
 .RM, .LM, .CM,
-.RW, .LW, .CF {
+.RW, .LW, .ST {
     position: absolute;
     width: 12vw;
     height: 20vw;
@@ -44,7 +44,7 @@ body {
 
 /* Player positions */
 .LW { top: 25%; left: 19%; }
-.CF { top: 18%; left: 44%; }
+.ST { top: 18%; left: 44%; }
 .RW { top: 25%; right: 19%; }
 
 .LM { top: 45%; left: 30%; }

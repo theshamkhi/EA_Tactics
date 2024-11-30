@@ -11,7 +11,7 @@ document.getElementById('playerForm').addEventListener('submit', function (e) {
     // Get form data
     const name = document.getElementById('name').value;
     const photo = document.getElementById('photo').value;
-    const position = document.getElementById('position').value.toUpperCase();
+    const position = document.getElementById('position').value;
     const nationality = document.getElementById('nationality').value;
     const flag = document.getElementById('flag').value;
     const club = document.getElementById('club').value;
@@ -202,7 +202,7 @@ function savePlayerToLocalStorage(player) {
 function OpenModal(positionId) {
     // Map position IDs to actual position names
     const positionMap = {
-        Add9: "CF",
+        Add9: "ST",
         Add11: "RW",
         Add7: "LW",
         Add10: "CM",
@@ -241,3 +241,52 @@ function CloseModal() {
     document.getElementById("Modal").classList.add("hidden");
 }
 
+
+
+// Fetch player data from the external JSON file
+async function fetchPlayerData() {
+    try {
+        const response = await fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json');
+        const data = await response.json();
+        return data.players;  // Assuming the data has a `players` array
+    } catch (error) {
+        console.error('Error fetching player data:', error);
+        return [];
+    }
+}
+
+// Function to autofill the form when the player name is entered
+async function autofillForm(playerName) {
+    const playersData = await fetchPlayerData();  // Fetch data when the function is called
+    const player = playersData.find(p => p.name.toLowerCase() === playerName.toLowerCase());
+    
+    if (player) {
+        // Autofill the form fields with player data
+        document.getElementById('photo').value = player.photo;
+        document.getElementById('position').value = player.position;
+        document.getElementById('nationality').value = player.nationality;
+        document.getElementById('flag').value = player.flag;
+        document.getElementById('club').value = player.club;
+        document.getElementById('logo').value = player.logo;
+        document.getElementById('rating').value = player.rating;
+        document.getElementById('pace').value = player.pace;
+        document.getElementById('shooting').value = player.shooting;
+        document.getElementById('passing').value = player.passing;
+        document.getElementById('dribbling').value = player.dribbling;
+        document.getElementById('defending').value = player.defending;
+        document.getElementById('physical').value = player.physical;
+    } else {
+        alert("Player not found!");
+    }
+}
+
+// Example: Add an event listener to the input field where the user enters the player name
+document.getElementById('name').addEventListener('input', function () {
+    const playerName = this.value.trim();
+    
+    if (playerName) {
+        autofillForm(playerName);
+    }
+});
+
+  
