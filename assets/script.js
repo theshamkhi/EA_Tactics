@@ -105,7 +105,7 @@ function populatePlayerCard(player) {
                 </svg>
             </button>
 
-            <div class="absolute text-left pt-[2rem] text-uppercase">
+            <div class="PlayerData absolute text-left pt-[2rem] text-uppercase">
                 <div class="text-xl font-bold">${rating}</div>
                 <div class="text-xl font-bold">${position}</div>
                 <div class="block w-[1.7rem] h-auto my-[0.3rem]">
@@ -115,17 +115,17 @@ function populatePlayerCard(player) {
                     <img class="w-full h-full object-contain" src="${logo}" alt="${club}">
                 </div>
             </div>
-            <div class="w-[9.4vw] h-auto mx-auto overflow-hidden">
+            <div class="PlayerImg w-[9.4vw] h-auto mx-auto overflow-hidden">
                 <img class="w-full h-full object-contain relative bottom-0" src="${photo}" alt="${name}">
             </div>
         </div>
         <!-- Player Card Bottom -->
         <div class="relative">
-            <div class="text-[#e9cc74] w-[90%] mx-auto py-[0.3rem_0]">
-                <div class="text-center text-xs font-bold uppercase border-b-2 border-[#e9cc74] py-[0.4rem]">
+            <div class="text-[#e9cc74] w-[90%] mx-auto py-[0.3rem]">
+                <div class="PlayerName text-center text-base font-bold uppercase py-[0.3rem] leading-none">
                     <span class="text-shadow">${name}</span>
                 </div>
-                <div class="flex justify-center my-[0.5rem]">`;
+                <div class="PlayerData flex justify-center py-[0.5rem]">`;
 
     // Add goalkeeper or field player stats
     if (position === "GK") {
