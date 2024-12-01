@@ -1,108 +1,93 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Load saved players from localStorage on page load
+    // Load saved players from localStorage
     const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
-    savedPlayers.forEach((player) => populatePlayerCard(player));
+    
+    // Loop through the saved players and populate their cards
+    savedPlayers.forEach(player => {
+        populatePlayerCard(player);
+    });
 });
 
 // Listen for form submission
 document.getElementById('playerForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Get form data
-    const name = document.getElementById('name').value;
-    const photo = document.getElementById('photo').value;
-    const position = document.getElementById('position').value;
-    const nationality = document.getElementById('nationality').value;
-    const flag = document.getElementById('flag').value;
-    const club = document.getElementById('club').value;
-    const logo = document.getElementById('logo').value;
-    const rating = document.getElementById('rating').value;
-    const pace = document.getElementById('pace').value;
-    const shooting = document.getElementById('shooting').value;
-    const passing = document.getElementById('passing').value;
-    const dribbling = document.getElementById('dribbling').value;
-    const defending = document.getElementById('defending').value;
-    const physical = document.getElementById('physical').value;
-    const diving = document.getElementById('diving').value;
-    const handling = document.getElementById('handling').value;
-    const kicking = document.getElementById('kicking').value;
-    const reflexes = document.getElementById('reflexes').value;
-    const speed = document.getElementById('speed').value;
-    const positioning = document.getElementById('positioning').value;
-
-    // Validate position
-    const positionCard = document.querySelector(`.players .${position}`);
-    if (!positionCard || positionCard.classList.contains('filled')) {
-    alert('Invalid position or position already filled!');
-    return;
-    }
-
-    // Player object
-    const player = {
-    name,
-    photo,
-    position,
-    nationality,
-    flag,
-    club,
-    logo,
-    rating,
-    pace,
-    shooting,
-    passing,
-    dribbling,
-    defending,
-    physical,
-    diving,
-    handling,
-    kicking,
-    reflexes,
-    speed,
-    positioning, 
+    const playerData = {
+        name: document.getElementById('name').value,
+        photo: document.getElementById('photo').value,
+        position: document.getElementById('position').value,
+        nationality: document.getElementById('nationality').value,
+        flag: document.getElementById('flag').value,
+        club: document.getElementById('club').value,
+        logo: document.getElementById('logo').value,
+        rating: document.getElementById('rating').value,
+        pace: document.getElementById('pace').value,
+        shooting: document.getElementById('shooting').value,
+        passing: document.getElementById('passing').value,
+        dribbling: document.getElementById('dribbling').value,
+        defending: document.getElementById('defending').value,
+        physical: document.getElementById('physical').value,
+        diving: document.getElementById('diving').value,
+        handling: document.getElementById('handling').value,
+        kicking: document.getElementById('kicking').value,
+        reflexes: document.getElementById('reflexes').value,
+        speed: document.getElementById('speed').value,
+        positioning: document.getElementById('positioning').value,
     };
 
-    // Populate player card
-    populatePlayerCard(player);
+    // Update localStorage
+    const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
+    const existingIndex = savedPlayers.findIndex(p => p.position === playerData.position);
 
-    // Save to localStorage
-    savePlayerToLocalStorage(player);
+    if (existingIndex !== -1) {
+        // Update the existing player
+        savedPlayers[existingIndex] = playerData;
+    } else {
+        // Add new player
+        savedPlayers.push(playerData);
+    }
+    localStorage.setItem('players', JSON.stringify(savedPlayers));
 
-    // Close the modal after saving the data
+    // Update the player card
+    populatePlayerCard(playerData);
+
+    // Close the modal and reset form
     CloseModal();
-
-    // Reset form
     e.target.reset();
 });
+
   
 // Function to populate a player card (updated with delete button)
 function populatePlayerCard(player) {
-    const { position, name, photo, 
-            nationality, flag, club, logo, rating, 
-            diving, handling, kicking, reflexes, speed, positioning, 
-            pace, shooting, passing, dribbling, defending, physical } = player;
+    const { position, name, photo, nationality, flag, club, logo, rating, diving, handling, kicking, reflexes, speed, positioning, pace, shooting, passing, dribbling, defending, physical } = player;
+
+    console.log('Player position:', position); // Add this to debug
+
+    if (!position) {
+        console.error('Invalid position:', position); // This will log if position is empty
+        return;
+    }
 
     const positionCard = document.querySelector(`.players .${position}`);
 
-    if (!positionCard) return;
+    if (!positionCard) {
+        console.error('Position card not found for position:', position);
+        return;
+    }
 
     let cardHTML = `
         <!-- Player Card Top -->
         <div class="relative group text-[#e9cc74] player-card" data-position="${position}">
+        <div class="relative group text-[#e9cc74] player-card" data-position="${position}">
             <button 
-                class="delete-button absolute z-20 inset-0 m-auto w-[4vw] h-auto opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center transform hover:scale-110 cursor-pointer"
+                class="modify-button text-xl absolute z-20 top-8 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+                onclick="modifyPlayer('${position}')">
+                ✎
+            </button>
+            <button 
+                class="delete-button text-xl absolute z-20 top-16 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
                 onclick="deletePlayerCard('${position}')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 48 48">
-                    <linearGradient id="wRKXFJsqHCxLE9yyOYHkza_fYgQxDaH069W_gr1" x1="9.858" x2="38.142" y1="9.858" y2="38.142" gradientUnits="userSpaceOnUse">
-                        <stop offset="0" stop-color="#f44f5a"></stop>
-                        <stop offset=".443" stop-color="#ee3d4a"></stop>
-                        <stop offset="1" stop-color="#e52030"></stop>
-                    </linearGradient>
-                    <path fill="url(#wRKXFJsqHCxLE9yyOYHkza_fYgQxDaH069W_gr1)" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-                    <path d="M33.192,28.95L28.243,24l4.95-4.95c0.781-0.781,0.781-2.047,0-2.828l-1.414-1.414	c-0.781-0.781-2.047-0.781-2.828,0L24,19.757l-4.95-4.95c-0.781-0.781-2.047-0.781-2.828,0l-1.414,1.414	c-0.781,0.781-0.781,2.047,0,2.828l4.95,4.95l-4.95,4.95c-0.781,0.781-0.781,2.047,0,2.828l1.414,1.414	c0.781,0.781,2.047,0.781,2.828,0l4.95-4.95l4.95,4.95c0.781,0.781,2.047,0.781,2.828,0l1.414-1.414	C33.973,30.997,33.973,29.731,33.192,28.95z" opacity=".05"></path>
-                    <path d="M32.839,29.303L27.536,24l5.303-5.303c0.586-0.586,0.586-1.536,0-2.121l-1.414-1.414	c-0.586-0.586-1.536-0.586-2.121,0L24,20.464l-5.303-5.303c-0.586-0.586-1.536-0.586-2.121,0l-1.414,1.414	c-0.586,0.586-0.586,1.536,0,2.121L20.464,24l-5.303,5.303c-0.586,0.586-0.586,1.536,0,2.121l1.414,1.414	c0.586,0.586,1.536,0.586,2.121,0L24,27.536l5.303,5.303c0.586,0.586,1.536,0.586,2.121,0l1.414-1.414	C33.425,30.839,33.425,29.889,32.839,29.303z" opacity=".07"></path>
-                    <path fill="#fff" d="M31.071,15.515l1.414,1.414c0.391,0.391,0.391,1.024,0,1.414L18.343,32.485	c-0.391,0.391-1.024,0.391-1.414,0l-1.414-1.414c-0.391-0.391-0.391-1.024,0-1.414l14.142-14.142	C30.047,15.124,30.681,15.124,31.071,15.515z"></path>
-                    <path fill="#fff" d="M32.485,31.071l-1.414,1.414c-0.391,0.391-1.024,0.391-1.414,0L15.515,18.343	c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414c0.391-0.391,1.024-0.391,1.414,0l14.142,14.142	C32.876,30.047,32.876,30.681,32.485,31.071z"></path>
-                </svg>
+                🗑️
             </button>
 
             <div class="PlayerData absolute text-left pt-[2rem] text-uppercase">
@@ -185,7 +170,6 @@ function populatePlayerCard(player) {
     `;
 
     positionCard.innerHTML = cardHTML;
-
     positionCard.classList.add('filled');
 }
 
@@ -230,7 +214,7 @@ function OpenModal(positionId) {
     };
 
     // Get the position name
-    const position = positionMap[positionId] || "";
+    const position = positionMap[positionId] || positionId;
 
     // Prefill the position input
     document.getElementById("position").value = position;
@@ -250,11 +234,12 @@ function OpenModal(positionId) {
 
 // Close Modal
 function CloseModal() {
-    // Clear the position field and hide the modal
-    document.getElementById("position").value = "";
+    // Reset all input fields in the modal
+    document.querySelectorAll("#Modal input").forEach(input => {
+        input.value = "";
+    });
     document.getElementById("Modal").classList.add("hidden");
 }
-
 
 
 // Fetch player data from the external JSON file
@@ -306,6 +291,38 @@ document.getElementById('name').addEventListener('input', function () {
         autofillForm(playerName);
     }
 });
+
+function modifyPlayer(position) {
+    const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
+    const player = savedPlayers.find(p => p.position === position);
+
+    if (player) {
+        // Pre-fill the form with existing player data
+        document.getElementById('name').value = player.name;
+        document.getElementById('photo').value = player.photo;
+        document.getElementById('position').value = player.position;
+        document.getElementById('nationality').value = player.nationality;
+        document.getElementById('flag').value = player.flag;
+        document.getElementById('club').value = player.club;
+        document.getElementById('logo').value = player.logo;
+        document.getElementById('rating').value = player.rating;
+        document.getElementById('pace').value = player.pace;
+        document.getElementById('shooting').value = player.shooting;
+        document.getElementById('passing').value = player.passing;
+        document.getElementById('dribbling').value = player.dribbling;
+        document.getElementById('defending').value = player.defending;
+        document.getElementById('physical').value = player.physical;
+        document.getElementById('diving').value = player.diving;
+        document.getElementById('handling').value = player.handling;
+        document.getElementById('kicking').value = player.kicking;
+        document.getElementById('reflexes').value = player.reflexes;
+        document.getElementById('speed').value = player.speed;
+        document.getElementById('positioning').value = player.positioning;
+
+        // Open the modal
+        OpenModal(player.position);
+    }
+}
 
 
 

@@ -52,11 +52,11 @@ body {
 .RM { top: 45%; right: 30%; }
 
 .LB { top: 60%; left: 19%; }
-.CB2 { top: 66%; left: 36%; }
-.CB1 { top: 66%; right: 36%; }
+.CB2 { top: 64%; left: 36%; }
+.CB1 { top: 64%; right: 36%; }
 .RB { top: 60%; right: 19%; }
 
-.GK { top: 80%; left: 44%; }
+.GK { top: 78%; left: 44%; }
 
 
 .sliderDiv {
@@ -81,7 +81,7 @@ body {
 }
 
 /* General structure for small screens */
-@media screen and (max-width: 768px) {
+@media (max-width: 1280px) {
     .PlayerData {
         display: none;
     }
