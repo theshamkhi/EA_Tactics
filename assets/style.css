@@ -59,6 +59,23 @@ body {
 .GK { top: 78%; left: 44%; }
 
 
+section {
+    background-image: url('../assets/media/backstade.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: auto;
+}
+
+.Sub {
+    background-color: rgb(48, 48, 48);
+    color: rgb(255, 255, 255);
+    font-size: 4rem;
+    padding: 3%;
+    text-align: center;
+    font-weight: bold;
+}
+
 .sliderDiv {
     width: 100%;
     overflow-x: auto;

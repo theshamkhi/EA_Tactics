@@ -347,8 +347,8 @@ fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
                     <!-- Player Card Top -->
                     <div class="flex relative text-[#e9cc74]">
                         <div class="absolute text-left pt-[2rem] text-uppercase">
-                            <div class="text-2xl font-light">${player.rating}</div>
-                            <div class="text-xl font-light">${player.position}</div>
+                            <div class="text-2xl font-bold">${player.rating}</div>
+                            <div class="text-xl font-bold">${player.position}</div>
                             
                             <div class="block w-[2rem] h-[25px] my-[0.3rem]">
                                 <img class="w-full h-full object-contain" src="${player.flag}" alt="${player.nationality}">
@@ -368,7 +368,7 @@ fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
                     <div class="relative">
                         <div class="text-[#e9cc74] w-[90%] mx-auto py-[0.3rem_0]">
                             
-                            <div class="text-center text-xl uppercase border-b-2 border-[#e9cc74] py-[1rem]">
+                            <div class="text-center text-xl font-bold uppercase border-b-2 border-[#e9cc74] py-[1rem]">
                                 <span class="text-shadow">${player.name}</span>
                             </div>
                 
