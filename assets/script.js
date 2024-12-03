@@ -13,27 +13,85 @@ document.getElementById('playerForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
     const playerData = {
-        name: document.getElementById('name').value,
-        photo: document.getElementById('photo').value,
-        position: document.getElementById('position').value,
-        nationality: document.getElementById('nationality').value,
-        flag: document.getElementById('flag').value,
-        club: document.getElementById('club').value,
-        logo: document.getElementById('logo').value,
-        rating: document.getElementById('rating').value,
-        pace: document.getElementById('pace').value,
-        shooting: document.getElementById('shooting').value,
-        passing: document.getElementById('passing').value,
-        dribbling: document.getElementById('dribbling').value,
-        defending: document.getElementById('defending').value,
-        physical: document.getElementById('physical').value,
-        diving: document.getElementById('diving').value,
-        handling: document.getElementById('handling').value,
-        kicking: document.getElementById('kicking').value,
-        reflexes: document.getElementById('reflexes').value,
-        speed: document.getElementById('speed').value,
-        positioning: document.getElementById('positioning').value,
+        name: document.getElementById('name').value.trim(),
+        photo: document.getElementById('photo').value.trim(),
+        position: document.getElementById('position').value.trim(),
+        nationality: document.getElementById('nationality').value.trim(),
+        flag: document.getElementById('flag').value.trim(),
+        club: document.getElementById('club').value.trim(),
+        logo: document.getElementById('logo').value.trim(),
+        rating: document.getElementById('rating').value.trim(),
+        pace: document.getElementById('pace').value.trim(),
+        shooting: document.getElementById('shooting').value.trim(),
+        passing: document.getElementById('passing').value.trim(),
+        dribbling: document.getElementById('dribbling').value.trim(),
+        defending: document.getElementById('defending').value.trim(),
+        physical: document.getElementById('physical').value.trim(),
+        diving: document.getElementById('diving').value.trim(),
+        handling: document.getElementById('handling').value.trim(),
+        kicking: document.getElementById('kicking').value.trim(),
+        reflexes: document.getElementById('reflexes').value.trim(),
+        speed: document.getElementById('speed').value.trim(),
+        positioning: document.getElementById('positioning').value.trim(),
     };
+
+    // Validate the inputs
+    let isValid = true;
+    const validationMessages = [];
+
+    if (playerData.name === '') {
+        isValid = false;
+        validationMessages.push('Name is required.');
+    }
+
+    // Check if URL inputs are valid (photo, flag, logo)
+    const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+    if (!urlRegex.test(playerData.photo)) {
+        isValid = false;
+        validationMessages.push('Invalid Photo URL.');
+    }
+    if (!urlRegex.test(playerData.flag)) {
+        isValid = false;
+        validationMessages.push('Invalid Flag URL.');
+    }
+    if (!urlRegex.test(playerData.logo)) {
+        isValid = false;
+        validationMessages.push('Invalid Club Logo URL.');
+    }
+
+    // Validate the rating and attributes (must be between 1 and 100)
+    const rating = parseInt(playerData.rating);
+    if (isNaN(rating) || rating < 1 || rating > 100) {
+        isValid = false;
+        validationMessages.push('Rating must be a number between 1 and 100.');
+    }
+
+    const attributes = ['pace', 'shooting', 'passing', 'dribbling', 'defending', 'physical'];
+    attributes.forEach(attr => {
+        const value = parseInt(playerData[attr]);
+        if (isNaN(value) || value < 1 || value > 100) {
+            isValid = false;
+            validationMessages.push(`${attr.charAt(0).toUpperCase() + attr.slice(1)} must be a number between 1 and 100.`);
+        }
+    });
+
+    // Goalkeeper-specific validation (if position is GK)
+    if (playerData.position === "GK") {
+        const goalkeeperAttributes = ['diving', 'handling', 'kicking', 'reflexes', 'speed', 'positioning'];
+        goalkeeperAttributes.forEach(attr => {
+            const value = parseInt(playerData[attr]);
+            if (isNaN(value) || value < 1 || value > 100) {
+                isValid = false;
+                validationMessages.push(`${attr.charAt(0).toUpperCase() + attr.slice(1)} must be a number between 1 and 100.`);
+            }
+        });
+    }
+
+    // Show validation messages if any
+    if (!isValid) {
+        alert(validationMessages.join('\n'));
+        return;
+    }
 
     // Update localStorage
     const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
