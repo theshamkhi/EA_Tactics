@@ -10,47 +10,60 @@
 </head>
 <body>
 
-
-    <div class="stade">
-        <img src="assets/media/stade.jpg" alt="Stadium" style="opacity: 0.7;">
-        <div class="players">
-            <!-- FRONT -->
-            <div class="ST">
-                <img src="assets/media/add.png" alt="Add" id="Add9" onclick="OpenModal('Add9')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <div class="RW">
-                <img src="assets/media/add.png" alt="Add" id="Add11" onclick="OpenModal('Add11')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <div class="LW">
-                <img src="assets/media/add.png" alt="Add" id="Add7" onclick="OpenModal('Add7')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <!-- MIDDLE -->
-            <div class="CM">
-                <img src="assets/media/add.png" alt="Add" id="Add10" onclick="OpenModal('Add10')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <div class="RM">
-                <img src="assets/media/add.png" alt="Add" id="Add8" onclick="OpenModal('Add8')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <div class="LM">
-                <img src="assets/media/add.png" alt="Add" id="Add6" onclick="OpenModal('Add6')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <!-- BACK -->
-            <div class="CB1">
-                <img src="assets/media/add.png" alt="Add" id="Add5" onclick="OpenModal('Add5')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <div class="CB2">
-                <img src="assets/media/add.png" alt="Add" id="Add4" onclick="OpenModal('Add4')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <div class="RB">
-                <img src="assets/media/add.png" alt="Add" id="Add2" onclick="OpenModal('Add2')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <div class="LB">
-                <img src="assets/media/add.png" alt="Add" id="Add3" onclick="OpenModal('Add3')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
-            <!-- GOAL -->
-            <div class="GK">
-                <img src="assets/media/add.png" alt="Add" id="Add0" onclick="OpenModal('Add0')" class="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[4vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
-            </div>
+    <div class="flex flex-col items-center justify-center text-center space-y-4 mb-[-25%]">
+        <!-- Logo Section -->
+        <div class="flex items-center justify-center relative">
+            <img src="assets/media/logo.png" 
+                 alt="Logo" 
+                 class="w-[15vw] animate-pulse filter drop-shadow-lg hover:scale-110 transition-transform duration-300">
+            <h1 class="ml-4 text-white font-bold text-7xl drop-shadow-lg">
+                FUTXpert
+            </h1>
+        </div>
+        <!-- Header Text -->
+        <h2 class="text-8xl font-bold text-white drop-shadow-lg bg-black bg-opacity-40 p-[4%]">
+            Build Your Dream Team with FUTXpert!
+        </h2>
+    </div>
+    
+    
+    <div class="players">
+        <!-- FRONT -->
+        <div class="ST">
+            <img src="assets/media/add.png" alt="Add" id="Add9" onclick="OpenModal('Add9')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <div class="RW">
+            <img src="assets/media/add.png" alt="Add" id="Add11" onclick="OpenModal('Add11')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <div class="LW">
+            <img src="assets/media/add.png" alt="Add" id="Add7" onclick="OpenModal('Add7')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <!-- MIDDLE -->
+        <div class="CM">
+            <img src="assets/media/add.png" alt="Add" id="Add10" onclick="OpenModal('Add10')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <div class="RM">
+            <img src="assets/media/add.png" alt="Add" id="Add8" onclick="OpenModal('Add8')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <div class="LM">
+            <img src="assets/media/add.png" alt="Add" id="Add6" onclick="OpenModal('Add6')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <!-- BACK -->
+        <div class="CB1">
+            <img src="assets/media/add.png" alt="Add" id="Add5" onclick="OpenModal('Add5')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <div class="CB2">
+            <img src="assets/media/add.png" alt="Add" id="Add4" onclick="OpenModal('Add4')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <div class="RB">
+            <img src="assets/media/add.png" alt="Add" id="Add2" onclick="OpenModal('Add2')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <div class="LB">
+            <img src="assets/media/add.png" alt="Add" id="Add3" onclick="OpenModal('Add3')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
+        </div>
+        <!-- GOAL -->
+        <div class="GK">
+            <img src="assets/media/add.png" alt="Add" id="Add0" onclick="OpenModal('Add0')" class="absolute z-20 top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[3vw] h-auto cursor-pointer transition-transform duration-200 hover:scale-110">
         </div>
     </div>
 
@@ -61,7 +74,7 @@
 
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div class="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                <div class="relative transform overflow-hidden rounded-lg bg-black bg-opacity-50 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                     
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b border-gray-700 rounded-t">
@@ -186,22 +199,37 @@
 
                         <!-- Submit Button -->
                         <div class="text-center mt-6">
-                            <button type="submit" id="submitButton" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg w-full sm:w-auto">Add Player</button>
+                            <button type="submit" id="submitButton" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg w-full sm:w-auto">Save Player</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
 
-    <section>
-        <div class="Sub">
-            <h1>Substitutions</h1>
-        </div>
-        <div class="sliderDiv">
-            <div id="playerSlider" class="slider">
+    <!-- Button to open overlay (Centered on screen) -->
+    <div class="flex items-center justify-center my-16">
+        <button id="openOverlay" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold text-lg py-3 px-6 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300">
+            Substitutions
+        </button>
+    </div>
 
-
+    <!-- Overlay Section -->
+    <section id="substitutionsOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-black bg-opacity-50 rounded-lg w-full">
+            <!-- Close Button -->
+            <button id="closeOverlay" class="text-white font-semibold m-4">
+                X
+            </button>
+            <!-- Header Text -->
+            <h2 class="text-8xl font-bold text-white text-center drop-shadow-lg bg-opacity-40 p-[2%]">
+                Substitutions
+            </h2>
+            <div class="sliderDiv mt-4">
+                <div id="playerSlider" class="slider">
+                    <!-- Slider content here -->
+                </div>
             </div>
         </div>
     </section>

@@ -1,80 +1,51 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
-
 body {
-    background-image: url('https://64.media.tumblr.com/343bee024bbbba5239af34c548709b0c/tumblr_ojztc0uKA31u8kxcgo1_1280.jpg');
+    margin: 0;
+    padding: 0;
+    background: url('https://64.media.tumblr.com/343bee024bbbba5239af34c548709b0c/tumblr_ojztc0uKA31u8kxcgo1_1280.jpg') no-repeat;
+    background-position: bottom;
     background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
-}
-
-.stade {
-    position: relative;
-    max-width: 90vw;
-    margin: 0 auto;
-    padding: 10%;
 }
 
 .players {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: 230vh;
+    margin-bottom: -11%;
 }
 
 .GK,
 .CB1, .CB2, .RB, .LB,
 .RM, .LM, .CM,
 .RW, .LW, .ST {
-    position: absolute;
-    width: 12vw;
-    height: 20vw;
+    width: 8vw;
+    height: 16vw;
     background-image: url('https://selimdoyranli.com/cdn/fut-player-card/img/card_bg.png');
     background-size: contain;
     background-repeat: no-repeat;
     padding: 1%;
+    position: absolute;
 }
 
 /* Player positions */
-.LW { top: 25%; left: 19%; }
-.ST { top: 18%; left: 44%; }
-.RW { top: 25%; right: 19%; }
+.LW { top: 33%; left: 33%; }
+.ST { top: 30%; left: 47%; }
+.RW { top: 33%; right: 30%; }
 
-.LM { top: 45%; left: 30%; }
-.CM { top: 35%; left: 44%; }
-.RM { top: 45%; right: 30%; }
+.LM { top: 44%; left: 34%; }
+.CM { top: 42%; left: 47%; }
+.RM { top: 44%; right: 34%; }
 
-.LB { top: 60%; left: 19%; }
-.CB2 { top: 64%; left: 36%; }
-.CB1 { top: 64%; right: 36%; }
-.RB { top: 60%; right: 19%; }
+.LB { top: 50%; left: 20%; }
+.CB2 { top: 55%; left: 36%; }
+.CB1 { top: 55%; right: 36%; }
+.RB { top: 50%; right: 20%; }
 
-.GK { top: 78%; left: 44%; }
+.GK { top: 63%; left: 47%; }
 
 
-section {
-    background-image: url('../assets/media/backstade.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: auto;
-}
-
-.Sub {
-    background-color: rgb(48, 48, 48);
-    color: rgb(255, 255, 255);
-    font-size: 4rem;
-    padding: 3%;
-    text-align: center;
-    font-weight: bold;
-}
 
 .sliderDiv {
     width: 100%;
@@ -84,37 +55,12 @@ section {
 .slider {
     display: flex;
     flex-wrap: nowrap;
-    gap: 2rem;
-    padding: 1rem;
     width: 100%;
-    box-sizing: border-box;
 }
 
 
 .filled {
     img[alt="Add"] {
         display: none;
-    }
-}
-
-/* General structure for small screens */
-@media (max-width: 1280px) {
-    .PlayerData {
-        display: none;
-    }
-    .PlayerName {
-        font-size: 0.4rem;
-        padding: 0.2rem 0;
-    }
-    .PlayerImg {
-        width: 12vw;
-    }
-    .GK,
-    .CB1, .CB2, .RB, .LB,
-    .RM, .LM, .CM,
-    .RW, .LW, .ST {
-        width: 14vw;
-        height: 22vw;
-        padding: 1%;
     }
 }
