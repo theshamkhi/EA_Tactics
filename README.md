@@ -11,7 +11,7 @@
 - **Dynamic Player Cards**: Display player cards dynamically based on added data.
 - **Edit Player Information**: Modify details of any player.
 - **Delete Player Cards**: Remove player cards from the roster.
-- **Modal for Player Details**: Open and close a modal window to view player details.
+- **Modal for Player Details**: Open and close a modal window to modify player details.
 - **Autofill from External JSON**: Automatically populate the form with player data from an external JSON source.
 - **Autofill by Player Name**: Auto-fill the form based on the entered player name.
 - **Substitution Overlay**: Display or hide the substitution overlay as needed.
