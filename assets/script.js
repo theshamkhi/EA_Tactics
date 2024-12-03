@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Load saved players from localStorage
     const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
     
-    // Loop through the saved players and populate their cards
     savedPlayers.forEach(player => {
         populatePlayerCard(player);
     });
@@ -44,7 +42,6 @@ document.getElementById('playerForm').addEventListener('submit', function (e) {
         validationMessages.push('Name is required.');
     }
 
-    // Check if URL inputs are valid (photo, flag, logo)
     const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
     if (!urlRegex.test(playerData.photo)) {
         isValid = false;
@@ -59,7 +56,6 @@ document.getElementById('playerForm').addEventListener('submit', function (e) {
         validationMessages.push('Invalid Club Logo URL.');
     }
 
-    // Validate the rating and attributes (must be between 1 and 100)
     const rating = parseInt(playerData.rating);
     if (isNaN(rating) || rating < 1 || rating > 100) {
         isValid = false;
@@ -75,7 +71,7 @@ document.getElementById('playerForm').addEventListener('submit', function (e) {
         }
     });
 
-    // Goalkeeper-specific validation (if position is GK)
+    // (if position is GK)
     if (playerData.position === "GK") {
         const goalkeeperAttributes = ['diving', 'handling', 'kicking', 'reflexes', 'speed', 'positioning'];
         goalkeeperAttributes.forEach(attr => {
@@ -93,29 +89,24 @@ document.getElementById('playerForm').addEventListener('submit', function (e) {
         return;
     }
 
-    // Update localStorage
     const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
     const existingIndex = savedPlayers.findIndex(p => p.position === playerData.position);
 
     if (existingIndex !== -1) {
-        // Update the existing player
         savedPlayers[existingIndex] = playerData;
     } else {
-        // Add new player
         savedPlayers.push(playerData);
     }
     localStorage.setItem('players', JSON.stringify(savedPlayers));
 
-    // Update the player card
     populatePlayerCard(playerData);
 
-    // Close the modal and reset form
     CloseModal();
     e.target.reset();
 });
 
   
-// Function to populate a player card (updated with delete button)
+// Function to populate a player card
 function populatePlayerCard(player) {
     const { position, name, photo, nationality, flag, club, logo, rating, diving, handling, kicking, reflexes, speed, positioning, pace, shooting, passing, dribbling, defending, physical } = player;
 
@@ -168,7 +159,6 @@ function populatePlayerCard(player) {
                 </div>
                 <div class="PlayerData flex justify-center">`;
 
-    // Add goalkeeper or field player stats
     if (position === "GK") {
         cardHTML += `
             <div class="border-r-2 border-[#e9cc74] pr-[0.4rem]">
@@ -234,11 +224,9 @@ function deletePlayerCard(position) {
     const positionCard = document.querySelector(`.players .${position}`);
     if (!positionCard) return;
 
-    // Remove card content
     positionCard.innerHTML = '';
     positionCard.classList.remove('filled');
 
-    // Update localStorage
     const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
     const updatedPlayers = savedPlayers.filter((player) => player.position !== position);
     localStorage.setItem('players', JSON.stringify(updatedPlayers));
@@ -254,7 +242,7 @@ function savePlayerToLocalStorage(player) {
 
 // Open Modal and Prefill Position
 function OpenModal(positionId) {
-    // Map position IDs to actual position names
+
     const positionMap = {
         Add9: "ST",
         Add11: "RW",
@@ -269,10 +257,10 @@ function OpenModal(positionId) {
         Add0: "GK",
     };
 
-    // Get the position name
+
     const position = positionMap[positionId] || positionId;
 
-    // Prefill the position input
+
     document.getElementById("position").value = position;
 
     // Show specific attributes for goalkeepers
@@ -284,13 +272,12 @@ function OpenModal(positionId) {
         document.getElementById("fieldPlayerAttributes").classList.remove("hidden");
     }
 
-    // Show the modal
     document.getElementById("Modal").classList.remove("hidden");
 }
 
 // Close Modal
 function CloseModal() {
-    // Reset all input fields in the modal
+
     document.querySelectorAll("#Modal input").forEach(input => {
         input.value = "";
     });
@@ -303,7 +290,7 @@ async function fetchPlayerData() {
     try {
         const response = await fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json');
         const data = await response.json();
-        return data.players;  // Assuming the data has a `players` array
+        return data.players; 
     } catch (error) {
         console.error('Error fetching player data:', error);
         return [];
@@ -312,11 +299,11 @@ async function fetchPlayerData() {
 
 // Function to autofill the form when the player name is entered
 async function autofillForm(playerName) {
-    const playersData = await fetchPlayerData();  // Fetch data when the function is called
+    const playersData = await fetchPlayerData();
     const player = playersData.find(p => p.name.toLowerCase() === playerName.toLowerCase());
     
     if (player) {
-        // Autofill the form fields with player data
+
         document.getElementById('photo').value = player.photo;
         document.getElementById('position').value = player.position;
         document.getElementById('nationality').value = player.nationality;
@@ -339,7 +326,6 @@ async function autofillForm(playerName) {
     }
 }
 
-// Example: Add an event listener to the input field where the user enters the player name
 document.getElementById('name').addEventListener('input', function () {
     const playerName = this.value.trim();
     
@@ -353,7 +339,7 @@ function modifyPlayer(position) {
     const player = savedPlayers.find(p => p.position === position);
 
     if (player) {
-        // Pre-fill the form with existing player data
+
         document.getElementById('name').value = player.name;
         document.getElementById('photo').value = player.photo;
         document.getElementById('position').value = player.position;
@@ -375,43 +361,40 @@ function modifyPlayer(position) {
         document.getElementById('speed').value = player.speed;
         document.getElementById('positioning').value = player.positioning;
 
-        // Open the modal
+
         OpenModal(player.position);
     }
 }
 
 
-// Get the button and overlay elements
+// Overlay
 const openOverlayBtn = document.getElementById('openOverlay');
 const substitutionsOverlay = document.getElementById('substitutionsOverlay');
 const closeOverlayBtn = document.getElementById('closeOverlay');
 
-// Open overlay when button is clicked
 openOverlayBtn.addEventListener('click', () => {
     substitutionsOverlay.classList.remove('hidden');
 });
 
-// Close overlay when close button is clicked
 closeOverlayBtn.addEventListener('click', () => {
     substitutionsOverlay.classList.add('hidden');
 });
 
-// // Fetch data from the JSON file
+
+
 const savedPlayers = JSON.parse(localStorage.getItem('players')) || []; // players on localStorage
 
 // Fetch player data
 fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
     .then(response => response.json())
     .then(data => {
-        const players = data.players; // Get players array
+        const players = data.players;
         const playerSlider = document.getElementById('playerSlider');
 
-        // Filter players that are not in localStorage based on player name
         const playersNotInLocalStorage = players.filter(player => {
             return !savedPlayers.some(savedPlayer => savedPlayer.name === player.name);
         });
 
-        // Loop through and create player cards for players not in localStorage
         playersNotInLocalStorage.forEach(player => {
             let cardHTML = `
                 <div class="relative w-[300px] h-[485px] scale-[0.8] bg-cover bg-center p-[2.5rem] z-10" style="background-image: url('https://selimdoyranli.com/cdn/fut-player-card/img/card_bg.png');">
@@ -446,7 +429,6 @@ fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
                 
                             <div class="flex justify-center my-[0.5rem]">`;
 
-            // Condition for goalkeepers
             if (player.position === "GK") {
                 cardHTML += ` 
                     <div class="border-r-2 pr-[2.3rem]">
@@ -503,7 +485,6 @@ fetch('https://theshamkhi.github.io/FUTXpert/assets/data/data.json')
                     </div>
                 </div>`;
 
-            // Append each card to the slider
             playerSlider.innerHTML += cardHTML;
         });
     })
