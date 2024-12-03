@@ -62,19 +62,20 @@ document.getElementById('playerForm').addEventListener('submit', function (e) {
         validationMessages.push('Rating must be a number between 1 and 100.');
     }
 
-    const attributes = ['pace', 'shooting', 'passing', 'dribbling', 'defending', 'physical'];
-    attributes.forEach(attr => {
-        const value = parseInt(playerData[attr]);
-        if (isNaN(value) || value < 1 || value > 100) {
-            isValid = false;
-            validationMessages.push(`${attr.charAt(0).toUpperCase() + attr.slice(1)} must be a number between 1 and 100.`);
-        }
-    });
-
     // (if position is GK)
     if (playerData.position === "GK") {
         const goalkeeperAttributes = ['diving', 'handling', 'kicking', 'reflexes', 'speed', 'positioning'];
         goalkeeperAttributes.forEach(attr => {
+            const value = parseInt(playerData[attr]);
+            if (isNaN(value) || value < 1 || value > 100) {
+                isValid = false;
+                validationMessages.push(`${attr.charAt(0).toUpperCase() + attr.slice(1)} must be a number between 1 and 100.`);
+            }
+        });
+    }
+    else {
+        const attributes = ['pace', 'shooting', 'passing', 'dribbling', 'defending', 'physical'];
+        attributes.forEach(attr => {
             const value = parseInt(playerData[attr]);
             if (isNaN(value) || value < 1 || value > 100) {
                 isValid = false;
