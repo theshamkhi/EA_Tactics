@@ -54,10 +54,8 @@ body {
 
 .slider {
     display: flex;
-    flex-wrap: nowrap;
     width: 100%;
 }
-
 
 .filled {
     img[alt="Add"] {
