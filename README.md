@@ -2,7 +2,11 @@
 
 **FUTXpert** is a web application designed to manage and customize your FIFA Ultimate Team (FUT). It provides an intuitive interface to add, modify, and organize players in real-time, allowing users to create the ideal team while offering an immersive and interactive experience.
 
+![image](https://github.com/user-attachments/assets/a1ae67d3-c58c-4158-956a-e23bded1ccb0)
+
 ## Features
+
+![image](https://github.com/user-attachments/assets/3d794f4d-4ec0-4241-9114-814bd2933127)
 
 - **Load Players from Local Storage**: Retrieve previously saved player data.
 - **Add New Player**: Add a player via an intuitive form.
